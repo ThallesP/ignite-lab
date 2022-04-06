@@ -23,10 +23,4 @@ export class StudentsResolver {
   enrollments(@Parent() student: Student) {
     return this.enrollmentsService.listEnrollmentsFromStudent(student.id);
   }
-
-  @Query(() => Student)
-  @UseGuards(AuthorizationGuard)
-  me(@CurrentUser() user: AuthUser) {
-    return this.studentsService.findByStudentByAuthUserId(user.sub);
-  }
 }
